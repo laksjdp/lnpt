@@ -40,8 +40,12 @@ chmod +x install-nethunter-termux
 # ===============================
 # ========== ~/.Bashrc ==========
 # ===============================
+
 # ln -s /mnt/d/work ~/j
 # if mountpoint -q /mnt/d/; then cd /mnt/d/work; else cd ~/Desktop; fi
+# python -m venv venv
+# alias spy3="source /mnt/d/work/py3/bin/activate"
+# echo -e "\e[97;44m   LAKS_JDP - Bug Bounty Hunting   \e[0m"
 alias kupgrade='sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y'
 alias obsh='sudo nano ~/.bashrc'
 alias sbsh='source ~/.bashrc'
@@ -57,12 +61,12 @@ alias codelnpt='code /mnt/d/work/lnpt'
 alias emptyHistory='sudo echo "" > ~/.bash_history'
 alias openHistory='sudo nano ~/.bash_history'
 
-cd /mnt/d/work/ws && clear
-
-echo -e "\n\e[97;44m   LAKS_JDP - Bug Bounty Hunting   \e[0m\n"
+cd /mnt/d/work/ws/early_warning && clear
 
 export GOPATH="$HOME/go"
 export PATH="$PATH:$GOPATH/bin"
+
+PS1='\n\[\e[1;32m\]lnpt\[\e[m\]\[\e[1;30m\]⚡\[\e[m\]\[\e[1;34m\]\W\[\e[m\]\n\[\e[1;36m\]❯\[\e[m\] '
 
 # =======================================
 # ========== Chrome Extensions ==========
