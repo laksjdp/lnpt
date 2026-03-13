@@ -66,7 +66,13 @@ cd /mnt/d/work/ws/early_warning && clear
 export GOPATH="$HOME/go"
 export PATH="$PATH:$GOPATH/bin"
 
-PS1='\n\[\e[1;32m\]lnpt\[\e[m\]\[\e[1;30m\]⚡\[\e[m\]\[\e[1;34m\]\W\[\e[m\]\n\[\e[1;36m\]❯\[\e[m\] '
+# Define your prompts as variables first for easier reading
+PROMPT_FULL='\n\[\e[1;32m\]lnpt\[\e[m\]\[\e[1;30m\]⚡\[\e[m\]\[\e[1;34m\]\W\[\e[m\]\n\[\e[1;36m\]❯\[\e[m\] '
+PROMPT_MINI='\n\[\e[1;32m\]lnpt\[\e[m\]\[\e[1;30m\]⚡ '
+
+# Set PS1 to switch between them dynamically
+PS1=$(if [ $COLUMNS -lt 40 ]; then echo "$PROMPT_MINI"; else echo -e "$PROMPT_FULL"; fi)
+
 
 # =======================================
 # ========== Chrome Extensions ==========
