@@ -70,6 +70,10 @@ export PATH="$PATH:$GOPATH/bin"
 PROMPT_FULL='\n\[\e[1;32m\]lnpt\[\e[m\]\[\e[1;30m\]⚡\[\e[m\]\[\e[1;34m\]\W\[\e[m\]\n\[\e[1;36m\]❯\[\e[m\] '
 PROMPT_MINI='\n\[\e[1;32m\]lnpt\[\e[m\]\[\e[1;30m\]⚡ '
 
+# Shell With ENV
+__show_venv() { [ -n "$VIRTUAL_ENV" ] && echo -e "(\e[1;33m$(basename "$VIRTUAL_ENV")\e[m) "; }
+PS1='\n$(__show_venv)\[\e[1;32m\]eth\[\e[m\]\[\e[1;30m\]⚡\[\e[m\]\[\e[1;34m\]\w\[\e[m\]\n\[\e[1;36m\]❯\[\e[m\] '
+
 # Set PS1 to switch between them dynamically
 PS1=$(if [ $COLUMNS -lt 40 ]; then echo "$PROMPT_MINI"; else echo -e "$PROMPT_FULL"; fi)
 

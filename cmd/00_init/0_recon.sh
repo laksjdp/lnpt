@@ -5,10 +5,12 @@
 # Content Discovery
 # :><: 
 
+# Commands
+awk -F':' '{print $2}' file | sort -nu # split by :
+mkdir -p {dir1,dir2,dir3,dir4,dir5,dir6}
 
-mkdir -p {init,pre-recon,recon,post-recon,notes}
 
-# Get Domains
+# Get Subdomains
 subfinder -dL init/wc -stats -all -silent -o pre-recon/subs.subfinder
 
 # Bruteforce Domains
@@ -53,9 +55,20 @@ cat dnsx | grep -vEf naabu-ports | sort -u > non-port
 wc -l ./*
 
 # 
-httpx -l naabu.ports -stats -sc -method -td -cl -title -probe -o web/httpx
-httpx -l naabu.ports -stats -sc -probe -o web/httpx.status
-httpx -l naabu.ports -stats -sc -probe -tls-probe -o web/httpx.tls
+httpx -l port -o web/httpx
+httpx -l httpx -sc -method -td -cl -title -probe -o web/httpx.1
+httpx -l port -sc -probe -o web/httpx.status
+httpx -l port -sc -probe -tls-probe -o web/httpx.tls
+
+httpx -l port -sc -cl -ct -title -location -o httpx-port
+
+cat data.port/httpx.txt | grep -E "\[[23][0-9]{2}\]" | grep "\[text/html\]"
+
+cat data.port/httpx.txt | awk -F'[' '{print $4}' | sed 's/]//g'
+
+cat httpx-port | awk -F'[][]' '{print $4}' | sort -u # 1,2,4,6,8,10,..etc
+
+cat data.port/httpx.json | jq -c 'select(.status_code < 400 and .status_code >= 300)' | tee data.port/sc300
 
 # Crwal - Try to get as much as can here files directories
 cat web/http | Katana -jsl -d 5 
@@ -64,4 +77,8 @@ Katana -u http://dm.com.Cookie=SupportedCookie=fvzcscs -xhr -jsl -aff
 
 Katana -u http://dm.com.Cookie=SupportedCookie=fvzcscs -xhr -jsl -aff | httpx -ct -cl -sc
 
+katana -u https://www.anduril.com/ -H "X-HackerOne-Research: H1 laksjdp" -d 5 -jc -jsl -kf all -o katana/dml-443
 
+katana -u https://www.anduril.com/ -H "X-HackerOne-Research: H1 laksjdp" -d 5 -jc -jsl -kf all -o katana/dml-443
+
+cat recon/port | tr -d '\r' | xargs -I URL katana -u URL -H "X-HackerOne-Research: H1 laksjdp" -d 5 -jc -jsl -kf all -o katana/port
