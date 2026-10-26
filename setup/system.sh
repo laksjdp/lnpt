@@ -46,7 +46,7 @@ chmod +x install-nethunter-termux
 # python -m venv venv
 # alias spy3="source /mnt/d/work/py3/bin/activate"
 # echo -e "\e[97;44m   LAKS_JDP - Bug Bounty Hunting   \e[0m"
-alias kupgrade='sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y'
+alias kupgrade='sudo apt update && sudo apt full-upgrade -y && sudo apt autoremove -y'
 alias obsh='sudo nano ~/.bashrc'
 alias sbsh='source ~/.bashrc'
 
