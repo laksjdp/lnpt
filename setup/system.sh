@@ -52,16 +52,14 @@ alias sbsh='source ~/.bashrc'
 
 alias cdwork='cd /mnt/d/work'
 alias cdws='cd /mnt/d//work/ws'
-alias cdweb3='cd /mnt/d/work/web3'
+alias cdweb3='cd /mnt/d/web3'
 alias cddownloads='cd /mnt/d/download'
 alias cdlnpt='cd /mnt/d/work/lnpt'
-
-alias codelnpt='code /mnt/d/work/lnpt'
 
 alias emptyHistory='sudo echo "" > ~/.bash_history'
 alias openHistory='sudo nano ~/.bash_history'
 
-cd /mnt/d/work/ws/early_warning && clear
+cd /mnt/d/work/ws && clear
 
 export GOPATH="$HOME/go"
 export PATH="$PATH:$GOPATH/bin"
@@ -70,12 +68,12 @@ export PATH="$PATH:$GOPATH/bin"
 PROMPT_FULL='\n\[\e[1;32m\]lnpt\[\e[m\]\[\e[1;30m\]⚡\[\e[m\]\[\e[1;34m\]\W\[\e[m\]\n\[\e[1;36m\]❯\[\e[m\] '
 PROMPT_MINI='\n\[\e[1;32m\]lnpt\[\e[m\]\[\e[1;30m\]⚡ '
 
-# Shell With ENV
-__show_venv() { [ -n "$VIRTUAL_ENV" ] && echo -e "(\e[1;33m$(basename "$VIRTUAL_ENV")\e[m) "; }
-PS1='\n$(__show_venv)\[\e[1;32m\]eth\[\e[m\]\[\e[1;30m\]⚡\[\e[m\]\[\e[1;34m\]\w\[\e[m\]\n\[\e[1;36m\]❯\[\e[m\] '
-
 # Set PS1 to switch between them dynamically
 PS1=$(if [ $COLUMNS -lt 40 ]; then echo "$PROMPT_MINI"; else echo -e "$PROMPT_FULL"; fi)
+
+# Shell With ENV
+# __show_venv() { [ -n "$VIRTUAL_ENV" ] && echo -e "(\e[1;33m$(basename "$VIRTUAL_ENV")\e[m) "; }
+# PS1='\n$(__show_venv)\[\e[1;32m\]eth\[\e[m\]\[\e[1;30m\]⚡\[\e[m\]\[\e[1;34m\]\w\[\e[m\]\n\[\e[1;36m\]❯\[\e[m\] '
 
 
 # =======================================

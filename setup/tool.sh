@@ -8,7 +8,7 @@ sudo apt update && sudo apt install -y jq python3 python3-pip build-essential li
 # export PATH="$PATH:$GOPATH/bin"
 
 # Check Installed Installed Tools
-ti=""; tu=""; for t in subfinder assetfinder chaos httpx naabu waybackurls katana urlfinder gospider ffuf gobuster nuclei dalfox subjack alterx massdns dnsx shuffledns gowitness anew unfurl firefox gau qsreplace gf; do command -v "$t" >/dev/null && ti+="$t, " || tu+="$t, "; done; echo -e "\n\e[32m[+]: ${ti%, }\n\e[31m[-]: ${tu%, }\e[0m"
+ti=""; tu=""; for t in subfinder httpx naabu waybackurls katana urlfinder gospider ffuf gobuster nuclei dalfox subjack alterx massdns dnsx shuffledns gowitness anew unfurl firefox gau qsreplace gf; do command -v "$t" >/dev/null && ti+="$t, " || tu+="$t, "; done; echo -e "\n\e[32m[+]: ${ti%, }\n\e[31m[-]: ${tu%, }\e[0m"
 
 
 # ========== RECONNAISSANCE ==========
